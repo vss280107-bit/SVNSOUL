@@ -9,9 +9,10 @@ const app = express();
 
 // Security
 app.use(helmet());
+const cors = require('cors');
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true,
+  origin: '*'
 }));
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200 });
